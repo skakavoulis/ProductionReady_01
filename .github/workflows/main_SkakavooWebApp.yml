@@ -1,5 +1,4 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - SkakavooWebApp
@@ -7,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - SkakavooWebApp
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -39,7 +38,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: "production"
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -53,6 +52,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: "SkakavooWebApp"
-          slot-name: "production"
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_ebb30c8372d94b13bb071324586b2174 }}
+          slot-name: "Production"
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B27EDFF348154FD9BE4302F56717A4F2 }}
           package: .
