@@ -38,7 +38,7 @@ app.UseExceptionHandler(app =>
         var exceptionHandlerPathFeature =
             context.Features.Get<IExceptionHandlerPathFeature>();
 
-        var error = exceptionHandlerPathFeature?.Error; 
+        var error = exceptionHandlerPathFeature?.Error;
         if (error is Exception)
         {
             await context.Response.WriteAsJsonAsync(new
@@ -61,4 +61,3 @@ app.UseRateLimiter();
 app.MapControllers();
 
 app.Run();
-
